@@ -7,9 +7,14 @@
 //
 
 import UIKit
+//import AVFoundation
+import AudioToolbox
+
+
 
 class ViewController: UIViewController {
     
+   // var audioPlayer = AVAudioPlayer()
     var pile = Array<Double>()
     var pileOld = Array<Double>()
     var sto : Double = 0.0
@@ -21,10 +26,14 @@ class ViewController: UIViewController {
     var nbr1: Double = 0
     var nbr2: Double = 0
    
+    
+    
     @IBOutlet weak var screen: UILabel!
     @IBOutlet weak var screen1: UILabel!
     @IBOutlet weak var screen2: UILabel!
     @IBOutlet weak var screen3: UILabel!
+    
+    @IBOutlet weak var soundOnOff: UISwitch!
     
     @IBAction func zeroDigit() {
         addScreenDigit(value: "0")
@@ -64,6 +73,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func enterDigit() {
+        soundActivate()
         if screen.text != "" {
             addPile()
            
@@ -75,6 +85,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func deletePile() {
+        soundActivate()
         if screen.text != "" {
             screen.text = ""
             affichePile()
@@ -114,6 +125,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func swapPile() {
+        soundActivate()
         if pile.count >= 2 {
             (pile[pile.count-1], pile[pile.count-2]) = (pile[pile.count-2], pile[pile.count-1])
             affichePile()
@@ -121,6 +133,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func undoPile() {
+        soundActivate()
         pile = pileOld.map {$0}
         affichePile()
     }
@@ -130,17 +143,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func storeValue() {
-        
+        soundActivate()
         sto = stockPile()
     
     }
     
     @IBAction func recallValue() {
+        soundActivate()
         pile.append(sto)
         affichePile()
     }
     
     @IBAction func capital() {
+        soundActivate()
         if (cap == 0.0 || (amort != 0.0 && inter != 0.0 && n != 0.0)) && screen.text != "" {
             cap = stockPile()
         } else {
@@ -150,6 +165,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func interest() {
+        soundActivate()
         if (inter == 0.0 || (amort != 0.0 && cap != 0.0 && n != 0.0)) && screen.text != "" {
              inter = stockPile()
         } else {
@@ -159,6 +175,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func monthNbr() {
+        soundActivate()
         if (n == 0.0 || (amort != 0.0 && cap != 0.0 && inter != 0.0)) && screen.text != "" {
         n = stockPile()
         } else {
@@ -168,6 +185,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func amortissement() {
+        soundActivate()
         if cap != 0.0, inter != 0.0, n != 0.0 {
             t1 = inter / 1200
             amort = (cap * t1) / (1 - pow((1 + t1),-n))
@@ -177,6 +195,7 @@ class ViewController: UIViewController {
         }
     
     @IBAction func resetFinancial() {
+        soundActivate()
         cap = 0.0
         inter = 0.0
         n = 0.0
@@ -205,11 +224,19 @@ class ViewController: UIViewController {
         calculateValue(op: "%-")
     }
     
+    func soundActivate() {
+        if soundOnOff.isOn {
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        }
+    }
+    
     func calError (errorMsg: String) {
         screen.text = ""
         screen1.text = errorMsg
         
     }
+    
+    
     
     func stockPile() -> Double {
         if screen.text != "" {
@@ -226,8 +253,8 @@ class ViewController: UIViewController {
     }
     
     func addScreenDigit(value: String) {
+        soundActivate()
         screen.text = screen.text! + value
-        
     }
     
     func addPile () {
@@ -242,7 +269,7 @@ class ViewController: UIViewController {
     }
     
     func calculateValue (op: String) {
-
+        soundActivate()
         if pile.count >= 1, (screen.text != "" || pileOld.count >= 1) {
                 addPile()
                 affichePile()
@@ -294,6 +321,7 @@ class ViewController: UIViewController {
 
     
     func calculateOneParameter (op: String) {
+        soundActivate()
         addPile()
         affichePile()
         pileOld = pile.map {$0}
@@ -340,6 +368,7 @@ class ViewController: UIViewController {
     }
 
     func delScreenDigit() {
+        soundActivate()
         if screen.text?.count != 0 {
             screen.text?.removeLast()
         }
@@ -348,7 +377,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        AudioServicesPlaySystemSound(1030)
+       /* let sound = Bundle.main.path(forResource: "447", ofType: "mp3")!
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
+            audioPlayer.play()
+        } catch {
+            print(error)
+        } */
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

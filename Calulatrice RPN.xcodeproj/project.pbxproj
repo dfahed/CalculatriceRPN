@@ -12,6 +12,7 @@
 		35716A2920E7F66200E8F4EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35716A2720E7F66200E8F4EC /* Main.storyboard */; };
 		35716A2B20E7F66300E8F4EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35716A2A20E7F66300E8F4EC /* Assets.xcassets */; };
 		35716A2E20E7F66300E8F4EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35716A2C20E7F66300E8F4EC /* LaunchScreen.storyboard */; };
+		35DB5A8C245D4BDC00E113F9 /* 447.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 35DB5A8B245D4BDC00E113F9 /* 447.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		35716A2A20E7F66300E8F4EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35716A2D20E7F66300E8F4EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35716A2F20E7F66300E8F4EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35DB5A8B245D4BDC00E113F9 /* 447.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 447.mp3; path = "Calulatrice RPN/Sounds/447.mp3"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		35716A2220E7F66200E8F4EC /* Calulatrice RPN */ = {
 			isa = PBXGroup;
 			children = (
+				35DB5A8D245D4C0800E113F9 /* Sounds */,
 				35716A2320E7F66200E8F4EC /* AppDelegate.swift */,
 				35716A2520E7F66200E8F4EC /* ViewController.swift */,
 				35716A2720E7F66200E8F4EC /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				35716A2F20E7F66300E8F4EC /* Info.plist */,
 			);
 			path = "Calulatrice RPN";
+			sourceTree = "<group>";
+		};
+		35DB5A8D245D4C0800E113F9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				35DB5A8B245D4BDC00E113F9 /* 447.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35DB5A8C245D4BDC00E113F9 /* 447.mp3 in Resources */,
 				35716A2E20E7F66300E8F4EC /* LaunchScreen.storyboard in Resources */,
 				35716A2B20E7F66300E8F4EC /* Assets.xcassets in Resources */,
 				35716A2920E7F66200E8F4EC /* Main.storyboard in Resources */,
