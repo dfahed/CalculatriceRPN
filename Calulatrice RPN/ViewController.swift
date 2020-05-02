@@ -238,9 +238,7 @@ class ViewController: UIViewController {
                 pile.append(nbr1)
                 
             }
-        } //else {
-//            pile.append(pile[pile.count - 1])
-//        }
+        }
     }
     
     func calculateValue (op: String) {
